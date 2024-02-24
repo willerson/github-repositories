@@ -14,7 +14,7 @@ const styles = tv({
   slots: {
     userCard: 'border border-border-line rounded py-10 px-6 text-center',
     figure: 'w-[200px] h-[200px] rounded-full overflow-hidden mx-auto mb-6',
-    userName: 'heading1 text-grey-neutral font-semibold',
+    userName: 'text-xl text-grey-neutral font-semibold',
     atSignName: 'text-sm text-gray-dark mb-6',
     userDescription: 'text-sm text-gray-dark',
   },
