@@ -3,7 +3,7 @@ import { Heart } from '../icons/heart';
 import { tv } from 'tailwind-variants';
 
 const styles = tv({
-  base: 'bg-primary text-sm text-white font-medium px-6 py-7 flex space-x-2',
+  base: 'bg-primary text-sm text-white font-medium px-4 lg:px-6 py-7 flex space-x-2',
 });
 
 interface FavoritesProps {

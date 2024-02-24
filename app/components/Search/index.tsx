@@ -5,7 +5,7 @@ import { tv } from 'tailwind-variants';
 const styles = tv({
   slots: {
     wrapper:
-      'border border-border-line rounded py-2 px-4 flex justify-between items-center',
+      'border border-border-line rounded py-2 px-4 flex justify-between items-center lg:w-[668px]',
     input: 'text-sm text-placeholder focus:outline-none',
   },
 });
