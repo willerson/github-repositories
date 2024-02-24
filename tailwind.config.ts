@@ -26,9 +26,6 @@ const config: Config = {
         'white-matte': '#F3F3F5',
         'border-line': '#E3E6E9',
       },
-      fontSize: {
-        heading1: '21px',
-      }
     },
   },
   plugins: [],
