@@ -19,26 +19,24 @@ interface IntroProps {
   searchName?: string;
   titleIntro?: string;
   messageIntro?: string;
-  imgIntro?: string;
 }
 
-const Intro = ({
-  searchName,
-  titleIntro,
-  messageIntro,
-  imgIntro,
-}: IntroProps) => {
+const Intro = ({ searchName, titleIntro, messageIntro }: IntroProps) => {
+  const peopleSearchImage = '/undraw_people_search.svg';
+  const notFound = '/undraw_404.svg';
+
   return (
     <section className={`${section()}`}>
-      <h2 className={`${notFoundName()}`}>
-        {'“'}
-        {searchName}
-        {'”'}
-      </h2>
+      <h2 className={`${notFoundName()}`}>{searchName && `“${searchName}”`}</h2>
       <h2 className={`${titleSection()}`}>{titleIntro}</h2>
       <p className={`${messageSection()}`}>{messageIntro}</p>
       <figure className={`${figure()}`}>
-        <Image src={`${imgIntro}`} alt="Search" width={230} height={257} />
+        <Image
+          src={`${searchName ? notFound : peopleSearchImage}`}
+          alt="Search"
+          width={230}
+          height={257}
+        />
       </figure>
     </section>
   );
