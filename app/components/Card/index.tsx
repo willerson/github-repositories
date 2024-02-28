@@ -3,12 +3,11 @@ import React from 'react';
 import { HeartFilled } from '../icons/heart-filled';
 import { Heart } from '../icons/heart';
 import Favorite from './favorite';
-import { useState } from 'react';
 import { tv } from 'tailwind-variants';
 
 const styles = tv({
   slots: {
-    card: 'border border-border-line rounded p-4 flex space-x-2',
+    card: 'border border-border-line rounded p-4 flex justify-between space-x-2',
     wrapperText: 'mb-4',
     header: 'text-lg text-grey-neutral font-semibold mb-1.5',
     paragraph: 'text-sm text-placeholder',
@@ -30,12 +29,15 @@ const {
   dateElement,
 } = styles();
 
-interface CardProps {
+export interface CardProps {
   title?: string;
   description?: string;
   technology?: string;
   date?: string;
   dotColor?: string;
+  checked?: boolean;
+  favorite?: boolean;
+  onClick?: () => void;
 }
 
 const Card = ({
@@ -44,13 +46,9 @@ const Card = ({
   technology,
   date,
   dotColor,
+  favorite,
+  onClick,
 }: CardProps) => {
-  const [favorite, setFavorite] = useState(false);
-
-  const handleFavorite = () => {
-    setFavorite(!favorite);
-  };
-
   return (
     <div className={`${card()}`}>
       <div>
@@ -59,16 +57,22 @@ const Card = ({
           <p className={`${paragraph()}`}>{description}</p>
         </header>
         <footer className={`${footer()}`}>
-          <p className={`${technologyType()}`}>
-            <span className={`${technologyDot()} ${dotColor}`}></span>
-            <span>{technology}</span>
-          </p>
+          {dotColor && (
+            <p className={`${technologyType()}`}>
+              <div
+                className={`${technologyDot()} bg-${
+                  dotColor?.toLocaleLowerCase() || 'bg-language'
+                }`}
+              ></div>
+              <span>{technology}</span>
+            </p>
+          )}
           <span className={`${dateElement()}`}>{date}</span>
         </footer>
       </div>
       <div>
-        <Favorite onClick={handleFavorite} state={favorite}>
-          {favorite ? <Heart /> : <HeartFilled />}
+        <Favorite onClick={onClick} state={favorite}>
+          {favorite ? <HeartFilled /> : <Heart />}
         </Favorite>
       </div>
     </div>

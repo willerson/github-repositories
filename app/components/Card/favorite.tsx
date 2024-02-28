@@ -4,8 +4,8 @@ const styles = tv({
   base: 'border rounded-full w-10 h-10 flex items-center justify-center transition-colors',
   variants: {
     state: {
-      false: 'border-primary',
-      true: 'bg-white-matte',
+      true: 'border-primary',
+      false: 'bg-white-matte',
     },
   },
 });

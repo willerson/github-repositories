@@ -6,7 +6,7 @@ const styles = tv({
   slots: {
     wrapper:
       'border border-border-line rounded py-2 px-4 flex justify-between items-center lg:w-[668px]',
-    input: 'text-sm text-placeholder focus:outline-none',
+    input: 'w-full text-sm text-placeholder focus:outline-none',
   },
 });
 
@@ -14,20 +14,33 @@ const { wrapper, input } = styles();
 
 interface SearchProps {
   onClick?: () => void;
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
-const Search = ({ onClick }: SearchProps) => {
+const Search = ({
+  onClick,
+  onSubmit,
+  value,
+  onChange,
+  inputRef,
+}: SearchProps) => {
   return (
-    <div className={`${wrapper()}`}>
+    <form className={`${wrapper()}`} onSubmit={onSubmit}>
       <input
         className={`${input()}`}
         type="text"
         placeholder="Buscar usuário"
+        value={value}
+        onChange={onChange}
+        ref={inputRef}
       />
-      <button onClick={onClick}>
+      <button type="submit" onClick={onClick}>
         <SearchIcon />
       </button>
-    </div>
+    </form>
   );
 };
 

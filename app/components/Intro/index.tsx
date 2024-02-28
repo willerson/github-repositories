@@ -36,6 +36,7 @@ const Intro = ({ searchName, titleIntro, messageIntro }: IntroProps) => {
           alt="Search"
           width={230}
           height={257}
+          priority={true}
         />
       </figure>
     </section>
