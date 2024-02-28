@@ -26,7 +26,13 @@ const UserCard = ({ image, alt, name, atSign, description }: UserCardProps) => {
   return (
     <div className={`${userCard()}`}>
       <figure className={`${figure()}`}>
-        <Image src={`${image}`} alt={`${alt}`} width={200} height={200} />
+        <Image
+          src={`${image}`}
+          alt={`${alt}`}
+          width={200}
+          height={200}
+          priority={true}
+        />
       </figure>
       <h3 className={`${userName()}`}>{name}</h3>
       <p className={`${atSignName()}`}>{atSign}</p>
