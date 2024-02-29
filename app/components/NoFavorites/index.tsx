@@ -4,28 +4,23 @@ import { tv } from 'tailwind-variants';
 const styles = tv({
   slots: {
     section: 'text-center',
-    titleSection: 'text-xl font-semibold text-grey-neutral',
+    title: 'text-xl text-primary font-semibold',
     messageSection: 'text-base text-grey-neutral mb-12',
     figure: 'flex justify-center',
   },
 });
 
-const { section, titleSection, messageSection, figure } = styles();
+const { section, title, messageSection, figure } = styles();
 
-interface IntroProps {
-  titleIntro?: string;
-  messageIntro?: string;
-}
-
-const Intro = ({ titleIntro, messageIntro }: IntroProps) => {
+const NoFavorites = () => {
   return (
     <section className={`${section()}`}>
-      <h2 className={`${titleSection()}`}>{titleIntro}</h2>
-      <p className={`${messageSection()}`}>{messageIntro}</p>
+      <h2 className={`${title()}`}>Sem repositórios Favoritos</h2>
+      <p className={`${messageSection()}`}>Busque a adicione aos favoritos</p>
       <figure className={`${figure()}`}>
         <Image
-          src={`/undraw_people_search.svg`}
-          alt="Search"
+          src={'/undraw_no_data_re_kwbl.svg'}
+          alt="No favorites"
           width={230}
           height={257}
           priority={true}
@@ -35,4 +30,4 @@ const Intro = ({ titleIntro, messageIntro }: IntroProps) => {
   );
 };
 
-export default Intro;
+export default NoFavorites;

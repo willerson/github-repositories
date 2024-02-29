@@ -9,11 +9,10 @@ const styles = tv({
 });
 
 interface FavoritesProps {
-  onClick?: () => void;
   className?: string;
 }
 
-const Favorites = ({ onClick, className }: FavoritesProps) => {
+const Favorites = ({ className }: FavoritesProps) => {
   const router = useRouter();
 
   return (

@@ -8,6 +8,7 @@ interface UserCardProps {
   name?: string;
   atSign?: string;
   description?: string;
+  className?: string;
 }
 
 const styles = tv({
@@ -22,9 +23,16 @@ const styles = tv({
 
 const { userCard, figure, userName, atSignName, userDescription } = styles();
 
-const UserCard = ({ image, alt, name, atSign, description }: UserCardProps) => {
+const UserCard = ({
+  image,
+  alt,
+  name,
+  atSign,
+  description,
+  className,
+}: UserCardProps) => {
   return (
-    <div className={`${userCard()}`}>
+    <div className={`${userCard()} ${className}`}>
       <figure className={`${figure()}`}>
         <Image
           src={`${image}`}
