@@ -59,14 +59,13 @@ const Card = ({
           <p className={`${paragraph()}`}>{description}</p>
         </header>
         <footer className={`${footer()}`}>
-          {dotColor && (
+          {technology && (
             <p className={`${technologyType()}`}>
               <div
                 className={`${technologyDot()} bg-${
-                  dotColor?.toLowerCase() || 'bg-language'
+                  dotColor?.toLowerCase() || 'language'
                 }`}
               ></div>
-
               <span>{technology}</span>
             </p>
           )}
