@@ -8,9 +8,10 @@ interface ContextValue {
   setName: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const GlobalContext = React.createContext<ContextValue | undefined>(
-  undefined
-);
+export const GlobalContext = React.createContext<ContextValue>({
+  name: '',
+  setName: () => console.warn(`setName is not ready`),
+});
 
 interface GlobalStorageProps {
   children: React.ReactNode;

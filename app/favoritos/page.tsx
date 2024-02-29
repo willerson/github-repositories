@@ -1,15 +1,26 @@
 'use client';
 import React from 'react';
 import { FavoriteContext } from '../GlobalContext';
-import Card from '../components/Card';
+import Card, { CardProps } from '../components/Card';
 import useFavorite from '../hooks/useFavorite';
+import { tv } from 'tailwind-variants';
+import NoFavorites from '../components/NoFavorites';
+
+const styles = tv({
+  slots: {
+    wrapper: 'max-w-4xl flex flex-col space-y-4 p-6 mx-auto',
+    title: 'text-xl text-primary text-center font-semibold',
+  },
+});
+
+const { wrapper, title } = styles();
 
 const FavoritosPage = () => {
   const { unAndFavorite, setUnAndFavorite } = React.useContext(FavoriteContext);
 
   const { isFavorite } = useFavorite();
 
-  const handleRemoveFavorite = (item) => {
+  const handleRemoveFavorite = (item: CardProps) => {
     setUnAndFavorite((prevFavorites) => {
       return prevFavorites.filter((fav) => {
         return !(
@@ -20,13 +31,11 @@ const FavoritosPage = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-4 p-6">
+    <div className={`${wrapper()}`}>
       {unAndFavorite.length > 0 ? (
-        <h2 className="text-xl text-primary text-center font-semibold">
-          Meus favoritos
-        </h2>
+        <h2 className={`${title()}`}>Meus favoritos</h2>
       ) : (
-        <p>Sem favoritos</p>
+        <NoFavorites />
       )}{' '}
       {unAndFavorite &&
         unAndFavorite.map((item) => (

@@ -30,6 +30,7 @@ const {
 } = styles();
 
 export interface CardProps {
+  key?: string;
   title?: string;
   description?: string;
   technology?: string;
@@ -41,6 +42,7 @@ export interface CardProps {
 }
 
 const Card = ({
+  key,
   title,
   description,
   technology,
@@ -50,7 +52,7 @@ const Card = ({
   onClick,
 }: CardProps) => {
   return (
-    <div className={`${card()}`}>
+    <div className={`${card()}`} key={key}>
       <div>
         <header className={`${wrapperText()}`}>
           <h2 className={`${header()}`}>{title}</h2>
@@ -61,9 +63,10 @@ const Card = ({
             <p className={`${technologyType()}`}>
               <div
                 className={`${technologyDot()} bg-${
-                  dotColor?.toLocaleLowerCase() || 'bg-language'
+                  dotColor?.toLowerCase() || 'bg-language'
                 }`}
               ></div>
+
               <span>{technology}</span>
             </p>
           )}

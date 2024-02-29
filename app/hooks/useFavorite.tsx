@@ -5,7 +5,13 @@ import { CardProps } from '../components/Card/index';
 const useFavorite = () => {
   const { unAndFavorite, setUnAndFavorite } = React.useContext(FavoriteContext);
 
-  const handleAddFavorite = (item) => {
+  const handleAddFavorite = (item: {
+    name: string;
+    description: string;
+    language: string;
+    pushed_at: string;
+    dotColor: string;
+  }) => {
     console.log(item);
     const isAlreadyFavorite = unAndFavorite.some((fav) => {
       return fav.title === item.name && fav.description === item.description;
@@ -33,7 +39,16 @@ const useFavorite = () => {
     }
   };
 
-  const isFavorite = (item, verify: boolean) => {
+  const isFavorite = (
+    item: {
+      name: string;
+      description: string;
+      language: string;
+      pushed_at: string;
+      dotColor: string;
+    },
+    verify: boolean
+  ) => {
     const checkItem = unAndFavorite.some(
       (element) =>
         element.title === item.name && element.description === item.description
