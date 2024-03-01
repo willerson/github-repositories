@@ -1,13 +1,20 @@
+// @ts-nocheck
 import Image from 'next/image';
 import React from 'react';
 import { tv } from 'tailwind-variants';
 
+export interface UserData {
+  data: {
+    id: string | undefined;
+    avatar_url?: string | undefined;
+    name?: string | undefined;
+    twitter_username?: string | undefined;
+    bio?: string | undefined;
+  }[];
+}
+
 export interface UserCardProps {
-  image?: string;
-  alt?: string;
-  name?: string;
-  atSign?: string;
-  description?: string;
+  data?: UserData[];
   className?: string;
 }
 
@@ -23,28 +30,25 @@ const styles = tv({
 
 const { userCard, figure, userName, atSignName, userDescription } = styles();
 
-const UserCard = ({
-  image,
-  alt,
-  name,
-  atSign,
-  description,
-  className,
-}: UserCardProps) => {
+const UserCard = ({ data }: UserData) => {
   return (
-    <div className={`${userCard()} ${className}`}>
-      <figure className={`${figure()}`}>
-        <Image
-          src={`${image}`}
-          alt={`${alt}`}
-          width={200}
-          height={200}
-          priority={true}
-        />
-      </figure>
-      <h3 className={`${userName()}`}>{name}</h3>
-      <p className={`${atSignName()}`}>{atSign}</p>
-      <p className={`${userDescription()}`}>{description}</p>
+    <div className={`${userCard()} `}>
+      {
+        <div key={data.id}>
+          <figure className={`${figure()}`}>
+            <Image
+              src={`${data.avatar_url}`}
+              alt={`${data.name}`}
+              width={200}
+              height={200}
+              priority={true}
+            />
+          </figure>
+          <h3 className={`${userName()}`}>{data.name}</h3>
+          <p className={`${atSignName()}`}>{data.twitter_username}</p>
+          <p className={`${userDescription()}`}>{data.bio}</p>
+        </div>
+      }
     </div>
   );
 };

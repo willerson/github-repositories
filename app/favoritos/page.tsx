@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FavoriteContext } from '../GlobalContext';
-import Card from '../components/Card';
+import Card, { CardProps } from '../components/Card';
 import useFavorite from '../hooks/useFavorite';
 import { tv } from 'tailwind-variants';
 import NoFavorites from '../components/NoFavorites';
@@ -20,7 +20,7 @@ const FavoritosPage = () => {
 
   const { isFavorite } = useFavorite();
 
-  const handleRemoveFavorite = (item) => {
+  const handleRemoveFavorite = (item: CardProps) => {
     setUnAndFavorite((prevFavorites) => {
       return prevFavorites.filter((fav) => {
         return !(
@@ -38,18 +38,22 @@ const FavoritosPage = () => {
         <NoFavorites />
       )}{' '}
       {unAndFavorite &&
-        unAndFavorite.map((item) => (
-          <Card
-            title={item.title}
-            key={item.title}
-            description={item.description}
-            technology={item.technology}
-            date={item.date}
-            dotColor={item.dotColor}
-            favorite={isFavorite(item, true)}
-            onClick={() => handleRemoveFavorite(item)}
-          />
-        ))}
+        unAndFavorite.map((item) => {
+          return (
+            <>
+              <Card
+                title={item.title}
+                key={item.title}
+                description={item.description}
+                technology={item.technology}
+                date={item.date}
+                dotColor={item.dotColor}
+                favorite={isFavorite(item, true)}
+                onClick={() => handleRemoveFavorite(item)}
+              />
+            </>
+          );
+        })}
     </div>
   );
 };

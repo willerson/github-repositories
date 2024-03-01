@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+'use client';
 import React from 'react';
 import { USER_REPOS_GET } from '../services/api';
 import { GlobalContext } from '../GlobalContext';
-import useFetch from '../hooks/useFetch';
+import useFetch, { ApiResponse } from '../hooks/useFetch';
 import { useSearchParams } from 'next/navigation';
 import Card from '../components/Card';
 import { useRouter } from 'next/navigation';
@@ -10,14 +11,6 @@ import moment from 'moment';
 import useFavorite from '../hooks/useFavorite';
 import { tv } from 'tailwind-variants';
 import Loading from '../components/Loading';
-
-interface DataProps {
-  name: string;
-  description: string;
-  language: string;
-  pushed_at: string;
-  dotColor?: string;
-}
 
 const styles = tv({
   slots: {
@@ -37,7 +30,7 @@ const CardWrapper = () => {
   const { handleAddFavorite, isFavorite } = useFavorite();
   const [currentPage, setCurrentPage] = React.useState(1);
 
-  const [repos, setRepos] = React.useState<DataProps[]>([]);
+  const [repos, setRepos] = React.useState<ApiResponse[]>([]);
 
   const config = `?per_page=10&page=${currentPage}&order=DESC`;
 
@@ -57,7 +50,12 @@ const CardWrapper = () => {
       }
     });
 
-    intersectionObserver.observe(document.querySelector('#observer-element'));
+    const observerElement = document.querySelector('#observer-element');
+    if (observerElement !== null) {
+      intersectionObserver.observe(observerElement);
+    } else {
+      console.error('Elemento observador não encontrado.');
+    }
 
     return () => intersectionObserver.disconnect();
   }, []);
@@ -77,19 +75,19 @@ const CardWrapper = () => {
       )}
 
       {repos && repos.length > 0
-        ? repos.map((item, index) => (
-            <Card
-              title={item.name}
-              key={`${index}`}
-              description={item.description}
-              technology={item.language}
-              date={`Atualizado em ${moment(item.pushed_at).format(
-                'D MMM YYYY'
-              )}`}
-              favorite={isFavorite(item, false)}
-              onClick={() => handleAddFavorite(item)}
-            />
-          ))
+        ? repos.map((item, index) => {
+            return (
+              <Card
+                title={item.name}
+                key={`${index}`}
+                description={item.description}
+                technology={item.technology}
+                date={`Atualizado em ${moment(item.date).format('D MMM YYYY')}`}
+                favorite={isFavorite(item, false)}
+                onClick={() => handleAddFavorite(item)}
+              />
+            );
+          })
         : loading && <Loading />}
 
       <div id="observer-element" className="w-full h-1"></div>
