@@ -4,6 +4,7 @@ import { HeartFilled } from '../icons/heart-filled';
 import { Heart } from '../icons/heart';
 import Favorite from './favorite';
 import { tv } from 'tailwind-variants';
+import technologyColors from './technology.module.css';
 
 const styles = tv({
   slots: {
@@ -47,7 +48,6 @@ const Card = ({
   description,
   technology,
   date,
-  dotColor,
   favorite,
   onClick,
 }: CardProps) => {
@@ -62,8 +62,8 @@ const Card = ({
           {technology && (
             <p className={`${technologyType()}`}>
               <div
-                className={`${technologyDot()} bg-${
-                  dotColor?.toLowerCase() || 'language'
+                className={`${technologyDot()} ${
+                  technologyColors[technology.toLocaleLowerCase()] || 'language'
                 }`}
               ></div>
               <span>{technology}</span>

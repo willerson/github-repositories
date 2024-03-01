@@ -13,7 +13,7 @@ import { tv } from 'tailwind-variants';
 const styles = tv({
   slots: {
     main: 'min-h-main-height p-6 flex justify-center',
-    wrapperCards: 'w-full lg:grid lg:grid-cols-[448px_1fr] lg:space-x-12',
+    wrapperCards: 'w-full lg:grid lg:grid-cols-1  lg:space-x-12',
     userCard: 'mb-6',
   },
 });
@@ -35,7 +35,11 @@ const User = () => {
 
   return (
     <main className={`${main()}`}>
-      <div className={`${wrapperCards()} ${loading && 'lg:grid-cols-1'}`}>
+      <div
+        className={`${wrapperCards()} ${
+          data !== null && 'lg:grid-cols-[448px_1fr]'
+        }`}
+      >
         {error && (
           <NotFound
             searchName={`${user}`}

@@ -12,7 +12,6 @@ const useFavorite = () => {
     pushed_at: string;
     dotColor: string;
   }) => {
-    console.log(item);
     const isAlreadyFavorite = unAndFavorite.some((fav) => {
       return fav.title === item.name && fav.description === item.description;
     });
