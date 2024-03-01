@@ -7,12 +7,12 @@ Nesse projeto você deverá desenvolver um site simples em que seja possível ac
 
 
 ## Requisitos
-- [ ] Uma barra de pesquisa para procurar um usuário
-- [ ] Um feedback caso o usuário não seja encontrado
-- [ ] Uma página do usuário, mostrando suas informações e sua lista de repositórios
-- [ ] **NÃO OBRIGATÓRIO** A lista de repositórios deverá conter uma paginação com rolagem infinita, ou seja, mais repositórios serão carregados conforme o usuário rola a página para baixo até que não haja mais repositórios (estilo Facebook, Instagram, Twitter, etc.)
-- [ ] Possibilidade de favoritar e remover repositórios dos favoritos (utilizar algum gerenciador de estado)
-- [ ] Listar repositórios favoritos
+- [x] Uma barra de pesquisa para procurar um usuário
+- [x] Um feedback caso o usuário não seja encontrado
+- [x] Uma página do usuário, mostrando suas informações e sua lista de repositórios
+- [x] **NÃO OBRIGATÓRIO** A lista de repositórios deverá conter uma paginação com rolagem infinita, ou seja, mais repositórios serão carregados conforme o usuário rola a página para baixo até que não haja mais repositórios (estilo Facebook, Instagram, Twitter, etc.)
+- [x] Possibilidade de favoritar e remover repositórios dos favoritos (utilizar algum gerenciador de estado)
+- [x] Listar repositórios favoritos
 
 
 ## Obrigatório
@@ -51,3 +51,4 @@ A API do GitHub requer uma autenticação. Você deverá gerar um token de acess
 
 ## Links
 [Documentação da API do GitHub](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
+
