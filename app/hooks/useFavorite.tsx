@@ -1,15 +1,24 @@
 import React from 'react';
 import { FavoriteContext } from '../GlobalContext';
+import { CardProps } from '../components/Card';
 
 const useFavorite = () => {
   const { unAndFavorite, setUnAndFavorite } = React.useContext(FavoriteContext);
 
   const handleAddFavorite = (item: {
-    name: string;
-    description: string;
-    language: string;
     pushed_at: string;
-    dotColor: string;
+    language?: string;
+    id?: number;
+    name?: string | undefined;
+    key?: string;
+    title?: string;
+    description?: string;
+    technology?: string;
+    date?: string;
+    dotColor?: string;
+    checked?: boolean;
+    favorite?: boolean | undefined;
+    onClick?: () => void;
   }) => {
     const isAlreadyFavorite = unAndFavorite.some((fav) => {
       return fav.title === item.name && fav.description === item.description;
@@ -37,16 +46,7 @@ const useFavorite = () => {
     }
   };
 
-  const isFavorite = (
-    item: {
-      name: string;
-      description: string;
-      language: string;
-      pushed_at: string;
-      dotColor: string;
-    },
-    verify: boolean
-  ) => {
+  const isFavorite = (item: CardProps, verify: boolean) => {
     const checkItem = unAndFavorite.some(
       (element) =>
         element.title === item.name && element.description === item.description

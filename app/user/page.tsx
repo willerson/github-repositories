@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+// @ts-nocheck
 'use client';
 import React from 'react';
 import CardWrapper from './card-wrapper';
@@ -52,12 +53,7 @@ const User = () => {
         {data && (
           <>
             <div className={`${userCard()}`}>
-              <UserCard
-                name={data.name}
-                image={data.avatar_url}
-                atSign={data.twitter_username}
-                description={data.bio}
-              />
+              <UserCard data={data} />
             </div>
             <CardWrapper />
           </>

@@ -4,6 +4,7 @@ import './globals.css';
 import { FavoriteStorage, GlobalStorage } from './GlobalContext';
 import { Header } from './components/Header';
 
+import { Suspense } from 'react';
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -23,8 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <GlobalStorage>
-          <Header />
-          <FavoriteStorage>{children}</FavoriteStorage>
+          <Suspense>
+            <Header />
+            <FavoriteStorage>{children}</FavoriteStorage>
+          </Suspense>
         </GlobalStorage>
       </body>
     </html>

@@ -31,6 +31,7 @@ const {
 } = styles();
 
 export interface CardProps {
+  name?: string | undefined;
   key?: string;
   title?: string;
   description?: string;
@@ -38,7 +39,7 @@ export interface CardProps {
   date?: string;
   dotColor?: string;
   checked?: boolean;
-  favorite?: boolean;
+  favorite?: boolean | undefined;
   onClick?: () => void;
 }
 
