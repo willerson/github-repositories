@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FavoriteContext } from '../GlobalContext';
-import Card, { CardProps } from '../components/Card';
+import Card from '../components/Card';
 import useFavorite from '../hooks/useFavorite';
 import { tv } from 'tailwind-variants';
 import NoFavorites from '../components/NoFavorites';
@@ -20,7 +20,7 @@ const FavoritosPage = () => {
 
   const { isFavorite } = useFavorite();
 
-  const handleRemoveFavorite = (item: CardProps) => {
+  const handleRemoveFavorite = (item) => {
     setUnAndFavorite((prevFavorites) => {
       return prevFavorites.filter((fav) => {
         return !(

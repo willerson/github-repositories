@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 import React from 'react';
 import CardWrapper from './card-wrapper';
@@ -31,7 +32,7 @@ const User = () => {
       const { url, options } = USER_GET(global?.name || user);
       request(url, options);
     }
-  }, [global?.name]);
+  }, [global?.name, user]);
 
   return (
     <main className={`${main()}`}>
