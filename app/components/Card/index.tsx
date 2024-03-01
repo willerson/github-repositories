@@ -52,7 +52,7 @@ const Card = ({
   onClick,
 }: CardProps) => {
   return (
-    <div className={`${card()}`} key={key}>
+    <div className={`${card()}`}>
       <div>
         <header className={`${wrapperText()}`}>
           <h2 className={`${header()}`}>{title}</h2>

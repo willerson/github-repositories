@@ -1,6 +1,5 @@
 import React from 'react';
 import { FavoriteContext } from '../GlobalContext';
-import { CardProps } from '../components/Card/index';
 
 const useFavorite = () => {
   const { unAndFavorite, setUnAndFavorite } = React.useContext(FavoriteContext);

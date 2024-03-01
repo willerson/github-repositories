@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { tv } from 'tailwind-variants';
 
-interface UserCardProps {
+export interface UserCardProps {
   image?: string;
   alt?: string;
   name?: string;
