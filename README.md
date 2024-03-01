@@ -52,3 +52,39 @@ A API do GitHub requer uma autenticação. Você deverá gerar um token de acess
 ## Links
 [Documentação da API do GitHub](https://docs.github.com/pt/rest?apiVersion=2022-11-28)
 
+
+## Sobre o projeto
+# Tecnologias
+- [Nextjs](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [pnpm](https://pnpm.io/pt/)
+- [Tailwind css](https://tailwindcss.com/)
+- [Tailwind Variants](https://www.tailwind-variants.org/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [momentjs](https://momentjs.com/)
+
+## Utilização e testes
+
+
+```
+git clone https://github.com/willerson/github-repositories.git
+
+```
+
+Após clonar o projeto para testar será necessário gerar um token para sera adicionado no projeto, para ver como gerar, acesse este link: [Gerar token](https://docs.github.com/pt/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+Após gerar o token, pode pegar o arquivo __.env.example__ na raiz do projeto e criar um novo com nome __.env.local__ e adicionar o token gerado substituindo 'TOKEN_GERADO' 
+
+```
+NEXT_PUBLIC_GITHUB_TOKEN=TOKEN_GERADO
+```
+
+Agora só rodar
+
+```
+pnpm run dev
+
+ou 
+
+npm run dev
+```
