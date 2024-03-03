@@ -8,6 +8,7 @@ import { useSearchParams } from 'next/navigation';
 import Card from '../components/Card';
 import { useRouter } from 'next/navigation';
 import moment from 'moment';
+import 'moment/locale/pt-br';
 import useFavorite from '../hooks/useFavorite';
 import { tv } from 'tailwind-variants';
 import Loading from '../components/Loading';
@@ -66,6 +67,8 @@ const CardWrapper = () => {
     }
   }, [data]);
 
+  console.log(data);
+  console.log(repos);
   return (
     <div className={`${wrapperCard()}`}>
       {repos && repos.length > 0 ? (
@@ -81,8 +84,10 @@ const CardWrapper = () => {
                 title={item.name}
                 key={`${index}`}
                 description={item.description}
-                technology={item.technology}
-                date={`Atualizado em ${moment(item.date).format('D MMM YYYY')}`}
+                technology={item.language}
+                date={`Atualizado em ${moment(item.pushed_at).format(
+                  'D MM YYYY'
+                )}`}
                 favorite={isFavorite(item, false)}
                 onClick={() => handleAddFavorite(item)}
               />
