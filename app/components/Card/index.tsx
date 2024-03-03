@@ -12,7 +12,7 @@ const styles = tv({
     wrapperText: 'mb-4',
     header: 'text-lg text-grey-neutral font-semibold mb-1.5',
     paragraph: 'text-sm text-placeholder',
-    footer: 'w-64 flex justify-between items-center',
+    footer: 'w-72 flex justify-between items-center',
     technologyType: 'flex items-center text-xs text-grey-neutral space-x-2',
     technologyDot: 'inline-block h-4 w-4 rounded-full',
     dateElement: 'text-xs text-grey-neutral',
