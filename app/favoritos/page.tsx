@@ -43,7 +43,7 @@ const FavoritosPage = () => {
             <>
               <Card
                 title={item.title}
-                key={item.title}
+                key={`${item.title}`}
                 description={item.description}
                 technology={item.technology}
                 date={item.date}
