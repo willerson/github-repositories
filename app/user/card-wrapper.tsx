@@ -30,10 +30,9 @@ const CardWrapper = () => {
   const router = useRouter();
   const { handleAddFavorite, isFavorite } = useFavorite();
   const [currentPage, setCurrentPage] = React.useState(1);
-
   const [repos, setRepos] = React.useState<ApiResponse[]>([]);
 
-  const config = `?per_page=10&page=${currentPage}&order=DESC`;
+  const config = `?per_page=10&page=${currentPage}&sort=created`;
 
   React.useEffect(() => {
     if (global?.name || user) {
@@ -67,8 +66,10 @@ const CardWrapper = () => {
     }
   }, [data]);
 
-  console.log(data);
-  console.log(repos);
+  let filteredData = repos.filter((obj, index, self) => {
+    return index === self.findIndex((o) => o.name === obj.name);
+  });
+
   return (
     <div className={`${wrapperCard()}`}>
       {repos && repos.length > 0 ? (
@@ -77,8 +78,8 @@ const CardWrapper = () => {
         <h2 className={`${title()}`}>Sem repositórios</h2>
       )}
 
-      {repos && repos.length > 0
-        ? repos.map((item, index) => {
+      {filteredData && filteredData.length > 0
+        ? filteredData.map((item, index) => {
             return (
               <Card
                 title={item.name}
@@ -86,7 +87,7 @@ const CardWrapper = () => {
                 description={item.description}
                 technology={item.language}
                 date={`Atualizado em ${moment(item.pushed_at).format(
-                  'D MM YYYY'
+                  'DD MMM YYYY'
                 )}`}
                 favorite={isFavorite(item, false)}
                 onClick={() => handleAddFavorite(item)}

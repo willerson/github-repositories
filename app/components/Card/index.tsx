@@ -32,7 +32,6 @@ const {
 
 export interface CardProps {
   name?: string | undefined;
-  key?: string;
   title?: string;
   description?: string;
   technology?: string;
@@ -44,7 +43,6 @@ export interface CardProps {
 }
 
 const Card = ({
-  key,
   title,
   description,
   technology,
@@ -62,11 +60,11 @@ const Card = ({
         <footer className={`${footer()}`}>
           {technology && (
             <p className={`${technologyType()}`}>
-              <div
+              <span
                 className={`${technologyDot()} ${
                   technologyColors[technology.toLocaleLowerCase()] || 'language'
                 }`}
-              ></div>
+              ></span>
               <span>{technology}</span>
             </p>
           )}
